@@ -1,1 +1,2 @@
-# ruby_scraping_hands_on
+# ブランチの説明
+- Zennのホームページの記事タイトルをスクレイピング
