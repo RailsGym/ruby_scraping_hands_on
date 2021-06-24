@@ -11,6 +11,7 @@
 - cloneしたディレクトリに移動し`$ ruby ruby_scraping.rb`を実行
 - ディレクトリを確認して`target.csv`が出力されていればOK 
   - 確認コマンドはこちら→ `$ ls`
+  - target.csvはQuipでも開ます！
 
 ## ブランチの説明
 - main
