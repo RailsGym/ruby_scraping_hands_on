@@ -6,6 +6,8 @@ require "nokogiri"
 # csvを出力するためのライブラリ
 require 'csv'
  
+HOME_URL = "https://qiita.com"
+
 # クレイピング対象のURL
 url = "https://qiita.com/question-trend"
 
@@ -25,17 +27,10 @@ contents = Nokogiri::HTML.parse(html,nil,charset)
 # <br>タグを改行（\n）に変えて置くとスクレイピングしやすくなるらしい。
 contents.search('br').each { |n| n.replace("\n") }
 
-titles = []
-contents.xpath("//a[@class='css-y5mpg1 e1c4qyq01']").map do |title|
-  titles.push(title.text)
-end
+titles = contents.xpath("//a[@class='css-y5mpg1 e1c4qyq01']").map(&:text)
 
 # xpath + クラス名で絞る(※クラスの前に1つ以上の要素指定が必要, クラス名はシングルクォーテーションで囲う)
-detail_urls = []
-contents.xpath("//a[@class='css-y5mpg1 e1c4qyq01']").map do |detail_url|
-  detail_urls.push(url + detail_url.attribute('href').value)
-end
-
+detail_urls = contents.xpath("//a[@class='css-y5mpg1 e1c4qyq01']").map{|detail_url| HOME_URL + detail_url.attribute('href').value}
 rows = [titles, detail_urls]
 
 # csvで出力
