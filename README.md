@@ -7,8 +7,10 @@
 - nokogiriをインストール (既にある人はそのままでOK)
   - `$ gem install nokogiri`
 
-## 動作確認 🔍
-- cloneしたディレクトリに移動し`$ ruby ruby_scraping.rb`を実行
+## 動作確認 🔍 (rubyバージョン2.5.0 以上で動作確認済み)
+- cloneしたディレクトリに移動する
+- rubyのバージョンが2.5.0以上であることを確認する
+- `$ ruby ruby_scraping.rb`を実行する
 - ディレクトリを確認して`target.csv`が出力されていればOK 
   - 確認コマンドはこちら→ `$ ls`
   - target.csvはQuipでも開ます！
