@@ -25,16 +25,8 @@ contents = Nokogiri::HTML.parse(html,nil,charset)
 # <br>タグを改行（\n）に変えて置くとスクレイピングしやすくなるらしい。
 contents.search('br').each { |n| n.replace("\n") }
 
-titles = []
-contents.xpath("//h2/a").map do |title|
-  titles.push(title.text)
-end
-
-detail_urls = []
-contents.xpath("//h2/a").map do |url|
-  detail_urls.push(url.attribute('href').value)
-end
-
+titles = contents.xpath("//h2/a").map(&:text)
+detail_urls = contents.xpath("//h2/a").map{|detail_url| detail_url.attribute('href').value}
 rows = [titles, detail_urls]
 
 # csvで出力
